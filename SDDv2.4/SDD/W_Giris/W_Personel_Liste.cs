@@ -16,12 +16,14 @@ namespace W_Giris
         {
             InitializeComponent();
         }
+        //Tools Sınıfına ulaşmamı saglıyor.
         Tools tools = new Tools();
-        //SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
+        //Veritabanı baglantım. 
+        SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
         private void Button1_Click(object sender, EventArgs e)
         {
-            
-            string arananPersonel = txtPersonel_Ad.Text;
+            //Filtreli Veri çekme.
+            string arananPersonel = txtPersonelAd.Text;
             tools.FiltreListele(arananPersonel,"Personel");
             dataGridView1.DataSource = tools.FiltreListele(arananPersonel,"personel");
             dataGridView1.Columns["Id"].Visible = false;
@@ -30,40 +32,59 @@ namespace W_Giris
             dataGridView1.Columns[1].HeaderText = "Adı";
             dataGridView1.Columns[2].HeaderText = "Soyadı";
             dataGridView1.Columns[3].HeaderText = "Cinsiyeti";
+            //------------------------------------------------
         }
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            object id = dataGridView1.CurrentRow.Cells["Id"].Value;
-            tools.PersonelDetay(id,"Personel",dataGridView1);
-           
-
+            //Eğer tıkladıgım satır boş degil ise personel detayını çekiyor.
+            if (dataGridView1.CurrentRow != null)
+            {
+                object id = dataGridView1.CurrentRow.Cells["Id"].Value;
+                tools.PersonelDetay(id, "Personel",dataGridView1);
+            }
+            //-------------------------------------------------------------
         }
 
         private void SilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
+            //Yetki dogrultusunda silme işlemini yapıyor
+            //eger veri tabanımda kullanıcıya yetki atamışssam silme işlemini yapıyor.
+            int id = Tools.KullaniciId;
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
             {
-
-                object referans = dataGridView1.CurrentRow.Cells["Id"].Value;
-                DialogResult result1 = MessageBox.Show("Silme işlemini onaylıyor musun?",
-                "Uyarı", MessageBoxButtons.YesNo);
-                if (result1 ==DialogResult.Yes)
+                if (dataGridView1.CurrentRow != null)
                 {
-                    tools.PersonelSil(referans, "Personel");
-                    dataGridView1.DataSource = tools.Listele("Personel");
+                    object referans = dataGridView1.CurrentRow.Cells["Id"].Value;
+                    DialogResult result1 = MessageBox.Show("Silme işlemini onaylıyor musun?",
+                    "Uyarı", MessageBoxButtons.YesNo);
+                    if (result1 == DialogResult.Yes)
+                    {
+                        tools.PersonelSil(referans, "Personel");
+                        dataGridView1.DataSource = tools.Listele("Personel");
+                    }
                 }
-                else
-                {
-                    
-                }
-                
-               
-
             }
-            
+            else
+            {
+                MessageBox.Show("Silme İşlemi İçin Yetkiniz Yok.");
+            }
+            Baglanti.Close();
         }
 
-        
+        private void W_Personel_Liste_Load(object sender, EventArgs e)
+        {
+            //Tabloya ekleme çıkarma yapmamı engelliyor.
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ReadOnly = true;
+        }
+
+      
     }
 }

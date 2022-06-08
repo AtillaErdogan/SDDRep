@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CnJh336HLmsxQU+nuaGxdMh/M8vATlqJ5JWk4AcNU8W/YnHAg+ubfB28T74dxRpLneAYwZZzEk6/dCeI7ejlDA==",
+  "dgSpecHash": "oeDvWyOpO78G312XvSaSnLeVYxWmYZ1f7XAOCzCy3D6b5/3ICvzXiaXU6u4BRA3gWGo4mddbgZpKXPiJxL2SMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
+  "projectFilePath": "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADNAN\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ADNAN\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

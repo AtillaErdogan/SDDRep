@@ -21,60 +21,71 @@ namespace W_Giris
         
         public void W_Detay_Load(object sender, EventArgs e)
         {
-            tools.ComboboxListele("Personel_Belge", cb_belgeler, "BelgeId", Convert.ToInt32(lblıd.Text));
-            
-            
-
+            tools.ComboboxListele("Personel_Belge", cbBelgeler, "BelgeId", Convert.ToInt32(lblPersonelId_ref.Text));
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txt_AdDeger.Enabled == true || txt_SoyadDeger.Enabled == true || cb_CinsiyetDeger.Enabled == true)
+            //TxtBoxların kilidini açıyor.
+            if (txtAd.Enabled == true || txtSoyad.Enabled == true || cbCinsiyet.Enabled == true)
             {
                 btn_Kilit.Text = "Kilit Aç";
-                txt_AdDeger.Enabled = false;
-                txt_SoyadDeger.Enabled = false;
-                cb_CinsiyetDeger.Enabled = false;
+                txtAd.Enabled = false;
+                txtSoyad.Enabled = false;
+                cbCinsiyet.Enabled = false;
             }
-            else if (txt_AdDeger.Enabled == false || txt_SoyadDeger.Enabled == false || cb_CinsiyetDeger.Enabled == false)
+            else if (txtAd.Enabled == false || txtSoyad.Enabled == false || cbCinsiyet.Enabled == false)
             {
                 btn_Kilit.Text = "Kilit Kapat";
-                txt_AdDeger.Enabled = true;
-                txt_SoyadDeger.Enabled = true;
-                cb_CinsiyetDeger.Enabled = true;
+                txtAd.Enabled = true;
+                txtSoyad.Enabled = true;
+                cbCinsiyet.Enabled = true;
             }
         }
 
         private void btn_Guncelle_Click(object sender, EventArgs e)
         {
-            if (txt_AdDeger.Enabled == true || txt_SoyadDeger.Enabled == true || cb_CinsiyetDeger.Enabled == true)
+            //İlk önce Kullanıcı'nın yetkisi var mı ona bakıyor ardından yetkisi var ise güncelleme işlemini yapıyor.
+            lblKullanıcıId_ref.Text= Tools.KullaniciId.ToString(); 
+            int id = Tools.KullaniciId;
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId " +
+                "where Kullanici.KullaniciId = "+id+" And Kullanici_Yetki.YetkiId = "+2+" ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
             {
-                
-                Baglanti.Open();
-                string sorgu = "update Personel set Ad=@personelAd, Soyad=@personelSoyadı, Cinsiyet=@personelCinsiyet where Id=@personelId";
-                SqlCommand komut = new SqlCommand(sorgu, Baglanti);
-                if (cb_CinsiyetDeger.Text == "Erkek")
+                if (txtAd.Enabled == true || txtSoyad.Enabled == true || cbCinsiyet.Enabled == true)
                 {
-                    lblcinsiyet.Text = 1.ToString();
+                    string sorgu = "update Personel set Ad=@personelAd, Soyad=@personelSoyadı, Cinsiyet=@personelCinsiyet where Id=@personelId";
+                    SqlCommand komut2 = new SqlCommand(sorgu, Baglanti);
+                    if (cbCinsiyet.Text == "Erkek")
+                    {
+                        lblcinsiyet_ref.Text = 1.ToString();
+                    }
+                    else if (cbCinsiyet.Text == "Kadın")
+                    {
+                        lblcinsiyet_ref.Text = 0.ToString();
+                    }
+                    komut2.Parameters.AddWithValue("@personelId", Convert.ToInt32(lblPersonelId_ref.Text));
+                    komut2.Parameters.AddWithValue("@personelAd", txtAd.Text);
+                    komut2.Parameters.AddWithValue("@personelSoyadı", txtSoyad.Text);
+                    komut2.Parameters.AddWithValue("@personelCinsiyet", lblcinsiyet_ref.Text);
+                    dataReader.Close();
+                    komut2.ExecuteNonQuery();
+                    MessageBox.Show("Müşteri Bilgileri Güncellendi.");
                 }
-                else if (cb_CinsiyetDeger.Text == "Kadın")
+                else
                 {
-                    lblcinsiyet.Text = 0.ToString();
+                    MessageBox.Show("Kilidi aç ve deger degişikligi yap.");
                 }
-                komut.Parameters.AddWithValue("@personelId", Convert.ToInt32(lblıd.Text));
-                komut.Parameters.AddWithValue("@personelAd", txt_AdDeger.Text);
-                komut.Parameters.AddWithValue("@personelSoyadı", txt_SoyadDeger.Text);
-                komut.Parameters.AddWithValue("@personelCinsiyet",lblcinsiyet.Text);
-                
-                
-                komut.ExecuteNonQuery();
                 Baglanti.Close();
-                MessageBox.Show("Müşteri Bilgileri Güncellendi.");
             }
             else
             {
-                MessageBox.Show("Kilidi aç ve deger degişikligi yap.");
+                MessageBox.Show("Güncelleme İşlemi İçin Yetkiniz Yok.");
             }
-
+            Baglanti.Close();            
         }
             
         

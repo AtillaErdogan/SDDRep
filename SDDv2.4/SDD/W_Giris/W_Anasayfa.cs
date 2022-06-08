@@ -15,18 +15,17 @@ namespace W_Giris
             InitializeComponent();
         }
 
-        private void personelEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PersonelEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             W_Personel_Kayıt personelKayıt = new W_Personel_Kayıt();
             personelKayıt.Show();
         }
 
-        private void personelListeleSilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PersonelListeleSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             W_Personel_Liste personelListe = new W_Personel_Liste();
             personelListe.Show();
         }
 
-        
     }
 }

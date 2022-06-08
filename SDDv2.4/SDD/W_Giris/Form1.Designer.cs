@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblKullaniciAdi = new System.Windows.Forms.Label();
+            this.lblSifre = new System.Windows.Forms.Label();
             this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
             this.txtSifre = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGiris = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblKullaniciAdi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 15);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Kullanıcı Adı";
+            this.lblKullaniciAdi.AutoSize = true;
+            this.lblKullaniciAdi.Location = new System.Drawing.Point(30, 22);
+            this.lblKullaniciAdi.Name = "lblKullaniciAdi";
+            this.lblKullaniciAdi.Size = new System.Drawing.Size(73, 15);
+            this.lblKullaniciAdi.TabIndex = 10;
+            this.lblKullaniciAdi.Text = "Kullanıcı Adı";
             // 
-            // label2
+            // lblSifre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Şifre";
+            this.lblSifre.AutoSize = true;
+            this.lblSifre.Location = new System.Drawing.Point(75, 72);
+            this.lblSifre.Name = "lblSifre";
+            this.lblSifre.Size = new System.Drawing.Size(30, 15);
+            this.lblSifre.TabIndex = 1;
+            this.lblSifre.Text = "Şifre";
             // 
             // txtKullaniciAdi
             // 
@@ -72,34 +72,33 @@
             this.txtSifre.Size = new System.Drawing.Size(100, 23);
             this.txtSifre.TabIndex = 3;
             // 
-            // button1
+            // btnGiris
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(75, 110);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 29);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Giris";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnGiris.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGiris.Location = new System.Drawing.Point(75, 110);
+            this.btnGiris.Name = "btnGiris";
+            this.btnGiris.Size = new System.Drawing.Size(136, 29);
+            this.btnGiris.TabIndex = 4;
+            this.btnGiris.Text = "Giris";
+            this.btnGiris.UseVisualStyleBackColor = true;
+            this.btnGiris.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(259, 186);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGiris);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.txtKullaniciAdi);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSifre);
+            this.Controls.Add(this.lblKullaniciAdi);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(275, 225);
             this.MinimumSize = new System.Drawing.Size(275, 225);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Anasayfa";
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,9 +106,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblKullaniciAdi;
+        private System.Windows.Forms.Label lblSifre;
+        private System.Windows.Forms.Button btnGiris;
         public System.Windows.Forms.TextBox txtKullaniciAdi;
         public System.Windows.Forms.TextBox txtSifre;
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj": {}
+    "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj": {
+    "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
+        "projectUniqueName": "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
         "projectName": "W_Giris",
-        "projectPath": "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
+        "projectPath": "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\W_Giris.csproj",
         "packagesPath": "C:\\Users\\ADNAN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADNAN\\source\\repos\\SDD\\SDDv2.4\\SDD\\W_Giris\\obj\\",
+        "outputPath": "C:\\Users\\ADNAN\\source\\SDD\\SDDv2.4\\SDD\\W_Giris\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

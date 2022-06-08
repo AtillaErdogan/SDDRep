@@ -28,88 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_Ad = new System.Windows.Forms.Label();
-            this.txt_Soyad = new System.Windows.Forms.Label();
-            this.txt_Cinsiyet = new System.Windows.Forms.Label();
-            this.txt_Belgeler = new System.Windows.Forms.Label();
-            this.txt_AdDeger = new System.Windows.Forms.TextBox();
-            this.txt_SoyadDeger = new System.Windows.Forms.TextBox();
-            this.cb_CinsiyetDeger = new System.Windows.Forms.ComboBox();
+            this.lblAd = new System.Windows.Forms.Label();
+            this.lblSoyad = new System.Windows.Forms.Label();
+            this.lblCinsiyet = new System.Windows.Forms.Label();
+            this.lblBelgeler = new System.Windows.Forms.Label();
+            this.txtAd = new System.Windows.Forms.TextBox();
+            this.txtSoyad = new System.Windows.Forms.TextBox();
+            this.cbCinsiyet = new System.Windows.Forms.ComboBox();
             this.btn_Kilit = new System.Windows.Forms.Button();
-            this.cb_belgeler = new System.Windows.Forms.ComboBox();
+            this.cbBelgeler = new System.Windows.Forms.ComboBox();
             this.btn_Guncelle = new System.Windows.Forms.Button();
-            this.lblıd = new System.Windows.Forms.Label();
-            this.lblcinsiyet = new System.Windows.Forms.Label();
+            this.lblPersonelId_ref = new System.Windows.Forms.Label();
+            this.lblcinsiyet_ref = new System.Windows.Forms.Label();
+            this.lblKullanıcıId_ref = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txt_Ad
+            // lblAd
             // 
-            this.txt_Ad.AutoSize = true;
-            this.txt_Ad.Location = new System.Drawing.Point(40, 27);
-            this.txt_Ad.Name = "txt_Ad";
-            this.txt_Ad.Size = new System.Drawing.Size(25, 15);
-            this.txt_Ad.TabIndex = 7;
-            this.txt_Ad.Text = "Adı";
+            this.lblAd.AutoSize = true;
+            this.lblAd.Location = new System.Drawing.Point(40, 27);
+            this.lblAd.Name = "lblAd";
+            this.lblAd.Size = new System.Drawing.Size(25, 15);
+            this.lblAd.TabIndex = 7;
+            this.lblAd.Text = "Adı";
             // 
-            // txt_Soyad
+            // lblSoyad
             // 
-            this.txt_Soyad.AutoSize = true;
-            this.txt_Soyad.Location = new System.Drawing.Point(23, 69);
-            this.txt_Soyad.Name = "txt_Soyad";
-            this.txt_Soyad.Size = new System.Drawing.Size(42, 15);
-            this.txt_Soyad.TabIndex = 8;
-            this.txt_Soyad.Text = "Soyadı";
+            this.lblSoyad.AutoSize = true;
+            this.lblSoyad.Location = new System.Drawing.Point(23, 69);
+            this.lblSoyad.Name = "lblSoyad";
+            this.lblSoyad.Size = new System.Drawing.Size(42, 15);
+            this.lblSoyad.TabIndex = 8;
+            this.lblSoyad.Text = "Soyadı";
             // 
-            // txt_Cinsiyet
+            // lblCinsiyet
             // 
-            this.txt_Cinsiyet.AutoSize = true;
-            this.txt_Cinsiyet.Location = new System.Drawing.Point(13, 117);
-            this.txt_Cinsiyet.Name = "txt_Cinsiyet";
-            this.txt_Cinsiyet.Size = new System.Drawing.Size(52, 15);
-            this.txt_Cinsiyet.TabIndex = 9;
-            this.txt_Cinsiyet.Text = "Cinsiyeti";
+            this.lblCinsiyet.AutoSize = true;
+            this.lblCinsiyet.Location = new System.Drawing.Point(13, 117);
+            this.lblCinsiyet.Name = "lblCinsiyet";
+            this.lblCinsiyet.Size = new System.Drawing.Size(52, 15);
+            this.lblCinsiyet.TabIndex = 9;
+            this.lblCinsiyet.Text = "Cinsiyeti";
             // 
-            // txt_Belgeler
+            // lblBelgeler
             // 
-            this.txt_Belgeler.AutoSize = true;
-            this.txt_Belgeler.Location = new System.Drawing.Point(13, 162);
-            this.txt_Belgeler.Name = "txt_Belgeler";
-            this.txt_Belgeler.Size = new System.Drawing.Size(52, 15);
-            this.txt_Belgeler.TabIndex = 10;
-            this.txt_Belgeler.Text = "Belgeleri";
+            this.lblBelgeler.AutoSize = true;
+            this.lblBelgeler.Location = new System.Drawing.Point(13, 162);
+            this.lblBelgeler.Name = "lblBelgeler";
+            this.lblBelgeler.Size = new System.Drawing.Size(52, 15);
+            this.lblBelgeler.TabIndex = 10;
+            this.lblBelgeler.Text = "Belgeleri";
             // 
-            // txt_AdDeger
+            // txtAd
             // 
-            this.txt_AdDeger.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_AdDeger.Enabled = false;
-            this.txt_AdDeger.Location = new System.Drawing.Point(74, 24);
-            this.txt_AdDeger.MaxLength = 50;
-            this.txt_AdDeger.Name = "txt_AdDeger";
-            this.txt_AdDeger.Size = new System.Drawing.Size(121, 23);
-            this.txt_AdDeger.TabIndex = 1;
+            this.txtAd.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAd.Enabled = false;
+            this.txtAd.Location = new System.Drawing.Point(74, 24);
+            this.txtAd.MaxLength = 50;
+            this.txtAd.Name = "txtAd";
+            this.txtAd.Size = new System.Drawing.Size(121, 23);
+            this.txtAd.TabIndex = 1;
             // 
-            // txt_SoyadDeger
+            // txtSoyad
             // 
-            this.txt_SoyadDeger.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_SoyadDeger.Enabled = false;
-            this.txt_SoyadDeger.Location = new System.Drawing.Point(74, 66);
-            this.txt_SoyadDeger.MaxLength = 50;
-            this.txt_SoyadDeger.Name = "txt_SoyadDeger";
-            this.txt_SoyadDeger.Size = new System.Drawing.Size(121, 23);
-            this.txt_SoyadDeger.TabIndex = 2;
+            this.txtSoyad.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSoyad.Enabled = false;
+            this.txtSoyad.Location = new System.Drawing.Point(74, 66);
+            this.txtSoyad.MaxLength = 50;
+            this.txtSoyad.Name = "txtSoyad";
+            this.txtSoyad.Size = new System.Drawing.Size(121, 23);
+            this.txtSoyad.TabIndex = 2;
             // 
-            // cb_CinsiyetDeger
+            // cbCinsiyet
             // 
-            this.cb_CinsiyetDeger.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cb_CinsiyetDeger.Enabled = false;
-            this.cb_CinsiyetDeger.FormattingEnabled = true;
-            this.cb_CinsiyetDeger.Items.AddRange(new object[] {
+            this.cbCinsiyet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbCinsiyet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCinsiyet.Enabled = false;
+            this.cbCinsiyet.FormattingEnabled = true;
+            this.cbCinsiyet.Items.AddRange(new object[] {
             "Erkek",
             "Kadın"});
-            this.cb_CinsiyetDeger.Location = new System.Drawing.Point(74, 114);
-            this.cb_CinsiyetDeger.Name = "cb_CinsiyetDeger";
-            this.cb_CinsiyetDeger.Size = new System.Drawing.Size(121, 23);
-            this.cb_CinsiyetDeger.TabIndex = 3;
+            this.cbCinsiyet.Location = new System.Drawing.Point(74, 114);
+            this.cbCinsiyet.Name = "cbCinsiyet";
+            this.cbCinsiyet.Size = new System.Drawing.Size(121, 23);
+            this.cbCinsiyet.TabIndex = 3;
             // 
             // btn_Kilit
             // 
@@ -122,14 +124,15 @@
             this.btn_Kilit.UseVisualStyleBackColor = true;
             this.btn_Kilit.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cb_belgeler
+            // cbBelgeler
             // 
-            this.cb_belgeler.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cb_belgeler.FormattingEnabled = true;
-            this.cb_belgeler.Location = new System.Drawing.Point(74, 159);
-            this.cb_belgeler.Name = "cb_belgeler";
-            this.cb_belgeler.Size = new System.Drawing.Size(121, 23);
-            this.cb_belgeler.TabIndex = 4;
+            this.cbBelgeler.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbBelgeler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBelgeler.FormattingEnabled = true;
+            this.cbBelgeler.Location = new System.Drawing.Point(74, 159);
+            this.cbBelgeler.Name = "cbBelgeler";
+            this.cbBelgeler.Size = new System.Drawing.Size(121, 23);
+            this.cbBelgeler.TabIndex = 4;
             // 
             // btn_Guncelle
             // 
@@ -142,41 +145,51 @@
             this.btn_Guncelle.UseVisualStyleBackColor = true;
             this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
             // 
-            // lblıd
+            // lblPersonelId_ref
             // 
-            this.lblıd.AutoSize = true;
-            this.lblıd.Location = new System.Drawing.Point(632, 240);
-            this.lblıd.Name = "lblıd";
-            this.lblıd.Size = new System.Drawing.Size(55, 15);
-            this.lblıd.TabIndex = 10;
-            this.lblıd.Text = "Belgeler :";
+            this.lblPersonelId_ref.AutoSize = true;
+            this.lblPersonelId_ref.Location = new System.Drawing.Point(396, 205);
+            this.lblPersonelId_ref.Name = "lblPersonelId_ref";
+            this.lblPersonelId_ref.Size = new System.Drawing.Size(17, 15);
+            this.lblPersonelId_ref.TabIndex = 10;
+            this.lblPersonelId_ref.Text = "--";
             // 
-            // lblcinsiyet
+            // lblcinsiyet_ref
             // 
-            this.lblcinsiyet.AutoSize = true;
-            this.lblcinsiyet.Location = new System.Drawing.Point(632, 267);
-            this.lblcinsiyet.Name = "lblcinsiyet";
-            this.lblcinsiyet.Size = new System.Drawing.Size(55, 15);
-            this.lblcinsiyet.TabIndex = 11;
-            this.lblcinsiyet.Text = "Belgeler :";
+            this.lblcinsiyet_ref.AutoSize = true;
+            this.lblcinsiyet_ref.Location = new System.Drawing.Point(396, 233);
+            this.lblcinsiyet_ref.Name = "lblcinsiyet_ref";
+            this.lblcinsiyet_ref.Size = new System.Drawing.Size(27, 15);
+            this.lblcinsiyet_ref.TabIndex = 11;
+            this.lblcinsiyet_ref.Text = "----";
+            // 
+            // lblKullanıcıId_ref
+            // 
+            this.lblKullanıcıId_ref.AutoSize = true;
+            this.lblKullanıcıId_ref.Location = new System.Drawing.Point(396, 181);
+            this.lblKullanıcıId_ref.Name = "lblKullanıcıId_ref";
+            this.lblKullanıcıId_ref.Size = new System.Drawing.Size(32, 15);
+            this.lblKullanıcıId_ref.TabIndex = 12;
+            this.lblKullanıcıId_ref.Text = "-----";
             // 
             // W_Detay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 309);
-            this.Controls.Add(this.lblcinsiyet);
-            this.Controls.Add(this.lblıd);
+            this.Controls.Add(this.lblKullanıcıId_ref);
+            this.Controls.Add(this.lblcinsiyet_ref);
+            this.Controls.Add(this.lblPersonelId_ref);
             this.Controls.Add(this.btn_Guncelle);
-            this.Controls.Add(this.cb_belgeler);
+            this.Controls.Add(this.cbBelgeler);
             this.Controls.Add(this.btn_Kilit);
-            this.Controls.Add(this.cb_CinsiyetDeger);
-            this.Controls.Add(this.txt_SoyadDeger);
-            this.Controls.Add(this.txt_AdDeger);
-            this.Controls.Add(this.txt_Belgeler);
-            this.Controls.Add(this.txt_Cinsiyet);
-            this.Controls.Add(this.txt_Soyad);
-            this.Controls.Add(this.txt_Ad);
+            this.Controls.Add(this.cbCinsiyet);
+            this.Controls.Add(this.txtSoyad);
+            this.Controls.Add(this.txtAd);
+            this.Controls.Add(this.lblBelgeler);
+            this.Controls.Add(this.lblCinsiyet);
+            this.Controls.Add(this.lblSoyad);
+            this.Controls.Add(this.lblAd);
             this.MaximumSize = new System.Drawing.Size(349, 348);
             this.MinimumSize = new System.Drawing.Size(349, 348);
             this.Name = "W_Detay";
@@ -190,17 +203,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label txt_Ad;
-        private System.Windows.Forms.Label txt_Soyad;
-        private System.Windows.Forms.Label txt_Cinsiyet;
-        private System.Windows.Forms.Label txt_Belgeler;
-        public System.Windows.Forms.TextBox txt_AdDeger;
-        public System.Windows.Forms.TextBox txt_SoyadDeger;
-        public System.Windows.Forms.ComboBox cb_CinsiyetDeger;
+        private System.Windows.Forms.Label lblAd;
+        private System.Windows.Forms.Label lblSoyad;
+        private System.Windows.Forms.Label lblCinsiyet;
+        private System.Windows.Forms.Label lblBelgeler;
+        public System.Windows.Forms.TextBox txtAd;
+        public System.Windows.Forms.TextBox txtSoyad;
+        public System.Windows.Forms.ComboBox cbCinsiyet;
         private System.Windows.Forms.Button btn_Kilit;
         private System.Windows.Forms.Button btn_Guncelle;
-        public System.Windows.Forms.Label lblıd;
-        public System.Windows.Forms.Label lblcinsiyet;
-        public System.Windows.Forms.ComboBox cb_belgeler;
+        public System.Windows.Forms.ComboBox cbBelgeler;
+        public System.Windows.Forms.Label lblPersonelId_ref;
+        public System.Windows.Forms.Label lblcinsiyet_ref;
+        public System.Windows.Forms.Label lblKullanıcıId_ref;
     }
 }

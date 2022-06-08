@@ -16,10 +16,10 @@ namespace W_Giris
         }
         SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
         Tools tools = new Tools();
-
         private void Button1_Click(object sender, EventArgs e)
-        {
-            
+        {        
+            //Kullanıcı kaydını yapıyor
+            //Boş txtBoxları kontrol ediyor.
             String personelAd = txtAd.Text;
             String personelSoyad = txtSoyad.Text;
             byte personelCinsiyet = 0;
@@ -44,8 +44,6 @@ namespace W_Giris
             txtAd.Text = null;
             txtSoyad.Text = null;
             CbCinsiyet.Text = null;
-
-
         }
 
     }
