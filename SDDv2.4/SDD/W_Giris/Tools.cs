@@ -26,12 +26,22 @@ namespace W_Giris
         }
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-        public DataTable FiltreListele(string arananNesne ,String TabloAdı)
+        public DataTable ListeleKullanici(string arananNesne ,String TabloAdı)
         {
             //Personel Listele Formunda isim, soyisim e göre arama yapıyor.
             //Tablo adını ve aranan nesneyi fonksiyona değer olarak atıyorum.
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from "+TabloAdı+" where Ad like '%"+arananNesne+"%' or " +
-                " Soyad like " + "'%"+arananNesne+"%' ",Baglanti);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from "+TabloAdı+ " where KullaniciAd like '%" + arananNesne+"%' ",Baglanti);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            return dataTable;
+            //----------------------------------------------------------        
+
+        }
+        public DataTable FiltreListelePersonel(string arananNesne, String TabloAdı)
+        {
+            //Personel Listele Formunda isim, soyisim e göre arama yapıyor.
+            //Tablo adını ve aranan nesneyi fonksiyona değer olarak atıyorum.
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from " + TabloAdı + " where PersonelAd like '%" + arananNesne + "%' or PersonelSoyad like '%"+arananNesne+"%' ", Baglanti);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             return dataTable;
@@ -62,22 +72,35 @@ namespace W_Giris
         public void PersonelEkle(String personelAd, String personelSoyad, byte personelCinsiyet, byte personelAktif)
         {
             //Personel kaydını yapıyor.
+            Baglanti.Close();
+            int id = Tools.KullaniciId;
             SqlCommand komut = new SqlCommand();
-            komut.CommandText = "INSERT INTO Personel (Ad,Soyad,Cinsiyet,Aktiflik) values(@personelAd,@personelSoyad,@personelCinsiyet,@personelAktif)";
+            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
             komut.Connection = Baglanti;
-            komut.Parameters.AddWithValue("@personelAd", personelAd);
-            komut.Parameters.AddWithValue("@personelSoyad", personelSoyad);
-            komut.Parameters.AddWithValue("@personelCinsiyet", personelCinsiyet);
-            komut.Parameters.AddWithValue("@personelAktif", personelAktif);
             Baglanti.Open();
-            int eklenenDeger = komut.ExecuteNonQuery();
-            if (eklenenDeger >= 1)
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
             {
-                MessageBox.Show("Kayıt Başarılı");
+                dataReader.Close();
+                komut.CommandText = "INSERT INTO Personel (PersonelAd,PersonelSoyad,PersonelCinsiyet,Aktiflik) values(@personelAd,@personelSoyad,@personelCinsiyet,@personelAktif)";
+                komut.Connection = Baglanti;
+                komut.Parameters.AddWithValue("@personelAd", personelAd);
+                komut.Parameters.AddWithValue("@personelSoyad", personelSoyad);
+                komut.Parameters.AddWithValue("@personelCinsiyet", personelCinsiyet);
+                komut.Parameters.AddWithValue("@personelAktif", personelAktif);
+                int eklenenDeger = komut.ExecuteNonQuery();
+                if (eklenenDeger >= 1)
+                {
+                    MessageBox.Show("Kayıt Başarılı");
+                }
+                else
+                {
+                    MessageBox.Show("Hata!");
+                }
             }
             else
             {
-                MessageBox.Show("Hata!");
+                MessageBox.Show("Personel Ekleme İşlemi İçin Yetkiniz Yok.");
             }
             Baglanti.Close();
             //-------------------------------------------------------
@@ -120,13 +143,13 @@ namespace W_Giris
                 {
                     W_Detay w_Detay = new W_Detay();
                     w_Detay.lblPersonelId_ref.Text = dataReader["Id"].ToString();
-                    w_Detay.txtAd.Text = dataReader["Ad"].ToString();
-                    w_Detay.txtSoyad.Text = dataReader["Soyad"].ToString();
-                    if (dataReader["Cinsiyet"].Equals(true))
+                    w_Detay.txtAd.Text = dataReader["PersonelAd"].ToString();
+                    w_Detay.txtSoyad.Text = dataReader["PersonelSoyad"].ToString();
+                    if (dataReader["PersonelCinsiyet"].Equals(true))
                     {
                         w_Detay.cbCinsiyet.Text = "Erkek";
                     }
-                    else if (dataReader["Cinsiyet"].Equals(false))
+                    else if (dataReader["PersonelCinsiyet"].Equals(false))
                     {
                         w_Detay.cbCinsiyet.Text = "Kadın";
                     }
@@ -153,6 +176,51 @@ namespace W_Giris
             }
             Baglanti.Close();
             //--------------------------------
+        }
+        public void KullaniciEkle(String KullaniciAd, String Sifre, byte Aktiflik)
+        {
+            Baglanti.Close();
+            int id = Tools.KullaniciId;
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "Select Kullanici_Yetki.KullaniciId, Kullanici_Yetki.NesneId, Kullanici_Yetki.YetkiId from Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici_Yetki.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " and Kullanici_Yetki.NesneId = " + 2 + "  ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
+            {
+                dataReader.Close();
+                SqlCommand komut2 = new SqlCommand();
+                komut2.CommandText = "INSERT INTO Kullanici (KullaniciAd,KullaniciSifre,Aktiflik) values(@KullaniciAd,@KullaniciSifre,@Aktiflik)";
+                komut2.Connection = Baglanti;
+                komut2.Parameters.AddWithValue("@KullaniciAd", KullaniciAd);
+                komut2.Parameters.AddWithValue("@KullaniciSifre", Sifre);
+                komut2.Parameters.AddWithValue("@Aktiflik", Aktiflik);
+                int eklenenDeger2 = komut2.ExecuteNonQuery();
+                if (eklenenDeger2 >= 1)
+                {
+                    MessageBox.Show("Kayıt Başarılı");
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Hata!");
+                    
+                }
+                Baglanti.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Bu Kullanıcının Ekleme Yetkisi Bulunmuyor.");
+            }
+            //Personel kaydını yapıyor.
+
+
+
+
+
+            
+            //-------------------------------------------------------
         }
     }
 }

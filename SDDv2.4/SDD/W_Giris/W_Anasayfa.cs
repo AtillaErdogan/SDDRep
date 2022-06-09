@@ -27,5 +27,22 @@ namespace W_Giris
             personelListe.Show();
         }
 
+        private void kullanıcıYetkiVerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            W_Kullanici_Yetki kullanici_Yetki = new W_Kullanici_Yetki();
+            kullanici_Yetki.Show();
+        }
+
+        private void kullnıcıListeleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            W_Kullanıcı_Liste kullanıcı_Liste = new W_Kullanıcı_Liste();
+            kullanıcı_Liste.Show();
+        }
+
+        private void kullanıcıEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            W_Kullanici_Kayit kullanici_Kayit = new W_Kullanici_Kayit();
+            kullanici_Kayit.Show();
+        }
     }
 }

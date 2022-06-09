@@ -22,16 +22,36 @@ namespace W_Giris
         SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
         private void Button1_Click(object sender, EventArgs e)
         {
+            Baglanti.Close();
+            int id = Tools.KullaniciId;
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "Select Kullanici_Yetki.KullaniciId, Kullanici_Yetki.NesneId, Kullanici_Yetki.YetkiId from Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici_Yetki.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 4 + " and Kullanici_Yetki.NesneId = " + 1 + "  ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
+            {
+                string arananPersonel = txtPersonelAd.Text;
+                tools.FiltreListelePersonel(arananPersonel, "Personel");
+                dataGridView1.DataSource = tools.FiltreListelePersonel(arananPersonel, "Personel");
+                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns["Aktiflik"].Visible = false;
+                dataGridView1.Columns["PasifTarih"].Visible = false;
+                dataGridView1.Columns[1].HeaderText = "Adı";
+                dataGridView1.Columns[2].HeaderText = "Soyadı";
+                dataGridView1.Columns[2].HeaderText = "Cinsiyeti";
+
+            }
+            else
+            {
+                MessageBox.Show("Kullanıcı Listeleme Yetkiniz yok.");
+            }
+
+
+
+
             //Filtreli Veri çekme.
-            string arananPersonel = txtPersonelAd.Text;
-            tools.FiltreListele(arananPersonel,"Personel");
-            dataGridView1.DataSource = tools.FiltreListele(arananPersonel,"personel");
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Aktiflik"].Visible = false;
-            dataGridView1.Columns["PasifTarih"].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Adı";
-            dataGridView1.Columns[2].HeaderText = "Soyadı";
-            dataGridView1.Columns[3].HeaderText = "Cinsiyeti";
+            //string arananPersonel = txtPersonelAd.Text
             //------------------------------------------------
         }
 
@@ -52,7 +72,7 @@ namespace W_Giris
             //eger veri tabanımda kullanıcıya yetki atamışssam silme işlemini yapıyor.
             int id = Tools.KullaniciId;
             SqlCommand komut = new SqlCommand();
-            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " ";
+            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
             komut.Connection = Baglanti;
             Baglanti.Open();
             SqlDataReader dataReader = komut.ExecuteReader();
@@ -72,7 +92,7 @@ namespace W_Giris
             }
             else
             {
-                MessageBox.Show("Silme İşlemi İçin Yetkiniz Yok.");
+                MessageBox.Show("Personel Silme İşlemi İçin Yetkiniz Yok.");
             }
             Baglanti.Close();
         }

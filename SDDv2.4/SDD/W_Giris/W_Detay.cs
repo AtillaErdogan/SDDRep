@@ -49,7 +49,7 @@ namespace W_Giris
             int id = Tools.KullaniciId;
             SqlCommand komut = new SqlCommand();
             komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId " +
-                "where Kullanici.KullaniciId = "+id+" And Kullanici_Yetki.YetkiId = "+2+" ";
+                "where Kullanici.KullaniciId = "+id+" And Kullanici_Yetki.YetkiId = "+2+ " And Kullanici_Yetki.NesneID = " + 1 + " ";
             komut.Connection = Baglanti;
             Baglanti.Open();
             SqlDataReader dataReader = komut.ExecuteReader();
@@ -57,7 +57,7 @@ namespace W_Giris
             {
                 if (txtAd.Enabled == true || txtSoyad.Enabled == true || cbCinsiyet.Enabled == true)
                 {
-                    string sorgu = "update Personel set Ad=@personelAd, Soyad=@personelSoyadı, Cinsiyet=@personelCinsiyet where Id=@personelId";
+                    string sorgu = "update Personel set PersonelAd=@personelAd, PersonelSoyad=@personelSoyadı, PersonelCinsiyet=@personelCinsiyet where Id=@personelId";
                     SqlCommand komut2 = new SqlCommand(sorgu, Baglanti);
                     if (cbCinsiyet.Text == "Erkek")
                     {
@@ -83,7 +83,7 @@ namespace W_Giris
             }
             else
             {
-                MessageBox.Show("Güncelleme İşlemi İçin Yetkiniz Yok.");
+                MessageBox.Show("Personel Güncelleme İşlemi İçin Yetkiniz Yok.");
             }
             Baglanti.Close();            
         }

@@ -138,3 +138,6 @@ C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.cs
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.dll
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.pdb
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.genruntimeconfig.cache
+C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Kullanici_Yetki.resources
+C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Kullanıcı_Liste.resources
+C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Kullanici_Kayit.resources
