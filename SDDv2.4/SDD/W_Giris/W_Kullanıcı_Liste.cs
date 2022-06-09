@@ -40,7 +40,6 @@ namespace W_Giris
                 string arananPersonel = txtKullanıcıAd.Text;
                 tools.ListeleKullanici(arananPersonel, "Kullanici");
                 dataGridView1.DataSource = tools.ListeleKullanici(arananPersonel, "Kullanici");
-                dataGridView1.Columns["KullaniciId"].Visible = false;
                 dataGridView1.Columns["Aktiflik"].Visible = false;
                 dataGridView1.Columns["PasifTarih"].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Kullanıcı Adı";

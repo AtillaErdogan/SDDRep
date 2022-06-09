@@ -93,7 +93,7 @@
             this.MaximumSize = new System.Drawing.Size(227, 228);
             this.MinimumSize = new System.Drawing.Size(227, 228);
             this.Name = "W_Kullanici_Kayit";
-            this.Text = "W_Kullanici_Kayit";
+            this.Text = "Kullanici Kayit";
             this.ResumeLayout(false);
             this.PerformLayout();
 

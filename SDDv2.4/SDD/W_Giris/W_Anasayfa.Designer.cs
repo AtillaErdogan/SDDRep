@@ -41,9 +41,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.kullnıcıListeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.kullanıcıYetkiVerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,8 +48,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu,
-            this.kullanıcıToolStripMenuItem,
-            this.adminToolStripMenuItem});
+            this.kullanıcıToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(465, 24);
@@ -113,11 +109,10 @@
             this.kullanıcıEkleToolStripMenuItem,
             this.toolStripSeparator3,
             this.kullnıcıListeleToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.kullanıcıYetkiVerToolStripMenuItem});
+            this.toolStripSeparator4});
             this.kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
-            this.kullanıcıToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.kullanıcıToolStripMenuItem.Text = "Kullanıcı";
+            this.kullanıcıToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.kullanıcıToolStripMenuItem.Text = "Admin";
             // 
             // kullanıcıEkleToolStripMenuItem
             // 
@@ -135,34 +130,13 @@
             // 
             this.kullnıcıListeleToolStripMenuItem.Name = "kullnıcıListeleToolStripMenuItem";
             this.kullnıcıListeleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kullnıcıListeleToolStripMenuItem.Text = "Kullanıcı Listele";
+            this.kullnıcıListeleToolStripMenuItem.Text = "Kullanıcı Yetki Ver";
             this.kullnıcıListeleToolStripMenuItem.Click += new System.EventHandler(this.kullnıcıListeleToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
-            // 
-            // kullanıcıYetkiVerToolStripMenuItem
-            // 
-            this.kullanıcıYetkiVerToolStripMenuItem.Name = "kullanıcıYetkiVerToolStripMenuItem";
-            this.kullanıcıYetkiVerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kullanıcıYetkiVerToolStripMenuItem.Text = "Kullanıcı Yetki Ver";
-            this.kullanıcıYetkiVerToolStripMenuItem.Click += new System.EventHandler(this.kullanıcıYetkiVerToolStripMenuItem_Click);
-            // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminEkleToolStripMenuItem});
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // adminEkleToolStripMenuItem
-            // 
-            this.adminEkleToolStripMenuItem.Name = "adminEkleToolStripMenuItem";
-            this.adminEkleToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.adminEkleToolStripMenuItem.Text = "Admin Ekle (Sorulacak)";
             // 
             // W_Anasayfa
             // 
@@ -197,8 +171,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem kullnıcıListeleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem kullanıcıYetkiVerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminEkleToolStripMenuItem;
     }
 }

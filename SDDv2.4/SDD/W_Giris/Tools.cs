@@ -222,5 +222,28 @@ namespace W_Giris
             
             //-------------------------------------------------------
         }
+        public void KullaniciDetay(object arananId, String TabloAdı, DataGridView tabloAdı)
+        {
+
+            SqlCommand komut = new SqlCommand();
+            //Personenelin veritabanındaki verisini lbl'a aktarıyor.
+            komut.CommandText = "select * from " + TabloAdı + " where Id= " + arananId + " ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
+            {
+                W_Kullanici_Yetki kullanici_Yetki = new W_Kullanici_Yetki();
+                kullanici_Yetki.dataGridView2.Rows[0].Cells[0].Value = dataReader["KullaniciAd"];
+                kullanici_Yetki.dataGridView2.Rows[0].Cells[0].Value = dataReader["NesneAd"];
+                kullanici_Yetki.dataGridView2.Rows[0].Cells[0].Value = dataReader["YetkiAd"];
+            }
+            else
+            {
+                MessageBox.Show("Listelenecek Veri Yok.");
+            }
+            Baglanti.Close();
+            //--------------------------------------------------------------
+        }
     }
 }

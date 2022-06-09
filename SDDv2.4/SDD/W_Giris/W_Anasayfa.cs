@@ -35,8 +35,8 @@ namespace W_Giris
 
         private void kullnıcıListeleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            W_Kullanıcı_Liste kullanıcı_Liste = new W_Kullanıcı_Liste();
-            kullanıcı_Liste.Show();
+            W_Kullanici_Yetki kullanici_Yetki = new W_Kullanici_Yetki();
+            kullanici_Yetki.Show();
         }
 
         private void kullanıcıEkleToolStripMenuItem_Click(object sender, EventArgs e)
