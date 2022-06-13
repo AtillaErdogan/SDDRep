@@ -19,6 +19,9 @@
     <Compile Update="W_Kullanıcı_Liste.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="W_Personel_Izin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="W_Personel_Kayıt.cs">
       <SubType>Form</SubType>
     </Compile>

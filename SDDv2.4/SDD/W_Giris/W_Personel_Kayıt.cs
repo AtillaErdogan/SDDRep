@@ -30,7 +30,7 @@ namespace W_Giris
             }
             else if (CbCinsiyet.Text == "Kadın")
             {
-                personelCinsiyet = 0;
+                personelCinsiyet = 2;
             }
             if (personelAd == "" || personelSoyad == "" || CbCinsiyet.Text=="") 
             {

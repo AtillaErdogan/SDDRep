@@ -125,6 +125,7 @@ namespace W_Giris
             this.rbErkek.TabStop = true;
             this.rbErkek.Text = "Erkek";
             this.rbErkek.UseVisualStyleBackColor = true;
+            this.rbErkek.CheckedChanged += new System.EventHandler(this.rbErkek_CheckedChanged);
             // 
             // lblKullanıcıID
             // 

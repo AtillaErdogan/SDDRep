@@ -31,16 +31,19 @@ namespace W_Giris
             SqlDataReader dataReader = komut.ExecuteReader();
             if (dataReader.Read())
             {
+                
                 string arananPersonel = txtPersonelAd.Text;
                 tools.FiltreListelePersonel(arananPersonel, "Personel");
                 dataGridView1.DataSource = tools.FiltreListelePersonel(arananPersonel, "Personel");
                 dataGridView1.Columns["Id"].Visible = false;
                 dataGridView1.Columns["Aktiflik"].Visible = false;
                 dataGridView1.Columns["PasifTarih"].Visible = false;
+                dataGridView1.Columns["PersonelCinsiyet"].Visible = false;
+                dataGridView1.Columns["Id1"].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Adı";
                 dataGridView1.Columns[2].HeaderText = "Soyadı";
                 dataGridView1.Columns[2].HeaderText = "Cinsiyeti";
-
+               
             }
             else
             {
@@ -70,6 +73,7 @@ namespace W_Giris
         {
             //Yetki dogrultusunda silme işlemini yapıyor
             //eger veri tabanımda kullanıcıya yetki atamışssam silme işlemini yapıyor.
+            Baglanti.Close();
             int id = Tools.KullaniciId;
             SqlCommand komut = new SqlCommand();
             komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
@@ -105,6 +109,16 @@ namespace W_Giris
             dataGridView1.ReadOnly = true;
         }
 
-      
+        private void rbErkek_CheckedChanged(object sender, EventArgs e)
+        {
+            int cinsiyetDeger = 0; 
+            if (rbErkek.Checked == true)
+            {
+                cinsiyetDeger = 1;
+
+
+            }
+            
+        }
     }
 }

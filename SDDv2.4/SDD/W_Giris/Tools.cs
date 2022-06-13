@@ -37,11 +37,11 @@ namespace W_Giris
             //----------------------------------------------------------        
 
         }
-        public DataTable FiltreListelePersonel(string arananNesne, String TabloAdı)
+        public DataTable FiltreListelePersonel(string arananNesne, string tabloAdı)
         {
             //Personel Listele Formunda isim, soyisim e göre arama yapıyor.
             //Tablo adını ve aranan nesneyi fonksiyona değer olarak atıyorum.
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from " + TabloAdı + " where PersonelAd like '%" + arananNesne + "%' or PersonelSoyad like '%"+arananNesne+"%' ", Baglanti);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("Select * from Personel INNER JOIN Cinsiyet_Tip ON Personel.PersonelCinsiyet = Cinsiyet_Tip.Id where PersonelAd like '%"+arananNesne+ "%' or PersonelSoyad like '%" + arananNesne + "%'", Baglanti);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             return dataTable;
@@ -64,6 +64,28 @@ namespace W_Giris
                 
             }
             else {
+                MessageBox.Show("Silme işlemi yapılamadı.");
+            }
+            //-------------------------------
+
+        }
+        public void YetkiSil(object referans, String TabloAdı)
+        {   //Kayıt Silme işlemi yapıyor.
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "Delete from " + TabloAdı + " where Id =@personelId";
+            komut.Connection = Baglanti;
+            komut.Parameters.AddWithValue("@personelId", referans);
+            Baglanti.Open();
+            int sayac = komut.ExecuteNonQuery();
+            Baglanti.Close();
+            if (sayac > 0)
+            {
+
+                MessageBox.Show("Kayıt Silinmiştir.");
+
+            }
+            else
+            {
                 MessageBox.Show("Silme işlemi yapılamadı.");
             }
             //-------------------------------
