@@ -25,11 +25,33 @@ namespace W_Giris
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.ReadOnly = true;
+            groupBox3.Visible = false;
+
+            Baglanti.Open();
+            SqlCommand komut = new SqlCommand("select * from Secim", Baglanti);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(komut);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            comboBox1.ValueMember = "SecimId";
+            comboBox1.DisplayMember = "Secim";
+            comboBox1.DataSource = dataTable;
+
+
+            komut = new SqlCommand("select * from Sure", Baglanti);
+            dataAdapter = new SqlDataAdapter(komut);
+            dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            comboBox2.ValueMember = "SureId";
+            comboBox2.DisplayMember = "Sure";
+            comboBox2.DataSource = dataTable;
+            Baglanti.Close();
+
+
 
 
             Baglanti.Close();
             int id = Tools.KullaniciId;
-            SqlCommand komut = new SqlCommand();
+            komut = new SqlCommand();
             komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 4 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
             komut.Connection = Baglanti;
             Baglanti.Open();
@@ -52,18 +74,90 @@ namespace W_Giris
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             object PersonelId = dataGridView1.CurrentRow.Cells["Id"].Value;
+            label6.Text = PersonelId.ToString();
+            object PersonelAdı = dataGridView1.CurrentRow.Cells["PersonelAd"].Value;
+            label5.Text = PersonelAdı.ToString();
             SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from Izin where PersonelId = "+PersonelId+" ", Baglanti);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             dataGridView2.DataSource = dataTable;
-            //dataGridView2.Columns[0].Visible = false;
-            //dataGridView2.Columns[3].Visible = false;
-            //dataGridView2.Columns[4].Visible = false;
-            //dataGridView2.Columns[3].Visible = false;
-            //object deger = dataGridView1.CurrentRow.Cells["KullaniciAd"].Value;
-            //groupBox3.Visible = true;
-            //dataGridView2.Columns[4].HeaderText = "Nesne Adı";
-            //dataGridView2.Columns[5].HeaderText = "Yetki Adı";
+            groupBox3.Visible = true;
+            dataGridView2.Columns[0].Visible = false;
+            dataGridView2.Columns[1].HeaderText = "Tarih";
+            dataGridView2.Columns[2].HeaderText = "Seçim Türü";
+            dataGridView2.Columns[3].HeaderText = "Süre Türü";
+            dataGridView2.Columns[4].HeaderText = "Süre";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int id = Tools.KullaniciId;
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 3 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
+            komut.Connection = Baglanti;
+            Baglanti.Open();
+            SqlDataReader dataReader = komut.ExecuteReader();
+            if (dataReader.Read())
+            {
+                komut.CommandText = "Select * from Izin where PersonelId =" + label6.Text+ " And Tarih=" + maskedTextBox1.Text + " and SecimTur = " + comboBox1.SelectedValue + "";
+                komut.Connection = Baglanti;
+                dataReader.Close();
+                dataReader = komut.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    MessageBox.Show("Bu verilere ait kayıt bulunmakta.");
+                }
+                else
+                {
+                    dataReader.Close();
+                    komut.CommandText = "INSERT INTO Izin values(@PersonelId,@Tarih,@SecimTur,@SureTur,@Sure)";
+                    komut.Connection = Baglanti;
+                    komut.Parameters.AddWithValue("@PersonelId", label6.Text);
+                    komut.Parameters.AddWithValue("@Tarih", maskedTextBox1.Text);
+                    komut.Parameters.AddWithValue("@SecimTur", Convert.ToInt32(comboBox1.SelectedValue));
+                    komut.Parameters.AddWithValue("@SureTur", Convert.ToInt32(comboBox2.SelectedValue));
+                    komut.Parameters.AddWithValue("@Sure", Convert.ToDouble(textBox1.Text));
+                    int eklenenDeger = komut.ExecuteNonQuery();
+                    if (eklenenDeger >= 1)
+                    {
+                        MessageBox.Show("Kayıt Başarılı");
+
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from Izin where PersonelId = " + label6.Text + " ", Baglanti);
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+                        dataGridView2.DataSource = dataTable;
+                        groupBox3.Visible = true;
+                        dataGridView2.Columns[0].Visible = false;
+                        dataGridView2.Columns[1].HeaderText = "Tarih";
+                        dataGridView2.Columns[2].HeaderText = "Seçim Türü";
+                        dataGridView2.Columns[3].HeaderText = "Süre Türü";
+                        dataGridView2.Columns[4].HeaderText = "Süre";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hata!");
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Bu İşlemi İçin Yetkiniz Yok.");
+            }
+            Baglanti.Close();
+
+
+
+
+
+
+
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

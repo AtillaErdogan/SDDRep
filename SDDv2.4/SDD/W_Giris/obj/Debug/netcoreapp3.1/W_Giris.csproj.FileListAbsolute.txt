@@ -127,7 +127,6 @@ C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.Fo
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.Properties.Resources.resources
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Anasayfa.resources
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Detay.resources
-C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Personel_Kayıt.resources
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.W_Personel_Liste.resources
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.csproj.GenerateResource.cache
 C:\Users\ADNAN\source\SDD\SDDv2.4\SDD\W_Giris\obj\Debug\netcoreapp3.1\W_Giris.GeneratedMSBuildEditorConfig.editorconfig

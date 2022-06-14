@@ -114,6 +114,7 @@ namespace W_Giris
                 if (eklenenDeger >= 1)
                 {
                     MessageBox.Show("Kayıt Başarılı");
+                    dataReader.Close();
                 }
                 else
                 {
@@ -125,6 +126,7 @@ namespace W_Giris
                 MessageBox.Show("Personel Ekleme İşlemi İçin Yetkiniz Yok.");
             }
             Baglanti.Close();
+            dataReader.Close();
             //-------------------------------------------------------
         }
         public void Giris(string kullaniciAdi, string sifre) 
@@ -141,7 +143,6 @@ namespace W_Giris
             SqlDataReader dataReader = komut.ExecuteReader();
             if (dataReader.Read())
             {
-                MessageBox.Show("Giriş Başarılı ");
                 KullaniciId = Convert.ToInt32(dataReader["KullaniciId"].ToString());
                 anasayfa.Show();
             }

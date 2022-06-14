@@ -17,8 +17,7 @@ namespace W_Giris
 
         private void PersonelEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            W_Personel_Kayıt personelKayıt = new W_Personel_Kayıt();
-            personelKayıt.Show();
+            
         }
 
         private void PersonelListeleSilToolStripMenuItem_Click(object sender, EventArgs e)

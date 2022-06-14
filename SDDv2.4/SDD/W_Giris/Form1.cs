@@ -20,13 +20,10 @@ namespace W_Giris
         
         private void Button1_Click(object sender, EventArgs e)
         {
-            
-            
             string kullaniciAdi = txtKullaniciAdi.Text;
             string sifre = txtSifre.Text;
             tools.Giris(kullaniciAdi,sifre);
-            
-            
+            this.Hide();
         }
 
         

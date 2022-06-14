@@ -49,6 +49,7 @@ namespace W_Giris
             {
                 MessageBox.Show("Kullanıcı Listeleme Yetkiniz yok.");
             }
+            dataReader.Close();
 
 
 
@@ -89,8 +90,36 @@ namespace W_Giris
                     "Uyarı", MessageBoxButtons.YesNo);
                     if (result1 == DialogResult.Yes)
                     {
-                        tools.PersonelSil(referans, "Personel");
-                        dataGridView1.DataSource = tools.Listele("Personel");
+
+                        
+                        komut.CommandText = "Delete from Personel where Id =@personelId";
+                        komut.Parameters.AddWithValue("@personelId", referans);
+                        dataReader.Close();
+                        int sayac = komut.ExecuteNonQuery();
+                        Baglanti.Close();
+                        if (sayac > 0)
+                        {
+
+                            MessageBox.Show("Kayıt Silinmiştir.");
+                            dataReader.Close();
+                            SqlDataAdapter dataAdapter = new SqlDataAdapter("Select Personel.Id,Personel.PersonelAd,Personel.PersonelSoyad,Cinsiyet_Tip.Cinsiyet from Personel INNER JOIN Cinsiyet_Tip  ON Personel.PersonelCinsiyet = Cinsiyet_Tip.Id", Baglanti);
+
+                            DataTable dataTable = new DataTable();
+                            
+                            dataAdapter.Fill(dataTable);
+                            dataGridView1.DataSource = dataTable;
+                            dataGridView1.Columns[0].Visible = false;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Silme işlemi yapılamadı.");
+                        }
+
+
+                        
+                        
+
                     }
                 }
             }
@@ -103,6 +132,7 @@ namespace W_Giris
 
         private void W_Personel_Liste_Load(object sender, EventArgs e)
         {
+            groupBox2.Visible = false;
             //Tabloya ekleme çıkarma yapmamı engelliyor.
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -119,6 +149,54 @@ namespace W_Giris
 
             }
             
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            groupBox2.Visible = true;
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            String personelAd = txtAd.Text;
+            String personelSoyad = txtSoyad.Text;
+            byte personelCinsiyet = 0;
+            byte personelAktif = 1;
+            if (CbCinsiyet.Text == "Erkek")
+            {
+                personelCinsiyet = 1;
+            }
+            else if (CbCinsiyet.Text == "Kadın")
+            {
+                personelCinsiyet = 2;
+            }
+            if (personelAd == "" || personelSoyad == "" || CbCinsiyet.Text == "")
+            {
+                MessageBox.Show("Boş alanları doldurun ");
+                txtAd.Text = null;
+                txtSoyad.Text = null;
+                CbCinsiyet.Text = null;
+                return;
+            }
+            tools.PersonelEkle(personelAd, personelSoyad, personelCinsiyet, personelAktif);
+            txtAd.Text = null;
+            txtSoyad.Text = null;
+            CbCinsiyet.Text = null;
+
+            
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("Select Personel.Id,Personel.PersonelAd,Personel.PersonelSoyad,Cinsiyet_Tip.Cinsiyet from Personel INNER JOIN Cinsiyet_Tip  ON Personel.PersonelCinsiyet = Cinsiyet_Tip.Id", Baglanti);
+            DataTable dataTable = new DataTable();          
+            dataAdapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[1].HeaderText = "Tarih";
+            //dataGridView1.Columns[2].HeaderText = "Seçim Türü";
+            //dataGridView1.Columns[3].HeaderText = "Süre Türü";
+            //dataGridView1.Columns[4].HeaderText = "Süre";
+
+
+
+
         }
     }
 }
