@@ -44,5 +44,11 @@ namespace W_Giris
             W_Kullanici_Kayit kullanici_Kayit = new W_Kullanici_Kayit();
             kullanici_Kayit.Show();
         }
+
+        private void personelİzinleriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            W_Personel_Izin personel_Izin = new W_Personel_Izin();
+            personel_Izin.Show();
+        }
     }
 }
