@@ -33,10 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbNesne = new System.Windows.Forms.ComboBox();
+            this.cbYetki = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -47,7 +46,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblKullaniciId = new System.Windows.Forms.Label();
+            this.lblNesneId = new System.Windows.Forms.Label();
+            this.lblYetkiId = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -92,48 +93,39 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Yetki";
             // 
-            // comboBox1
+            // cbNesne
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 6;
+            this.cbNesne.FormattingEnabled = true;
+            this.cbNesne.Location = new System.Drawing.Point(64, 67);
+            this.cbNesne.Name = "cbNesne";
+            this.cbNesne.Size = new System.Drawing.Size(121, 23);
+            this.cbNesne.TabIndex = 6;
+            this.cbNesne.SelectedIndexChanged += new System.EventHandler(this.cbNesne_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cbYetki
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(64, 112);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 7;
+            this.cbYetki.FormattingEnabled = true;
+            this.cbYetki.Location = new System.Drawing.Point(64, 112);
+            this.cbYetki.Name = "cbYetki";
+            this.cbYetki.Size = new System.Drawing.Size(121, 23);
+            this.cbYetki.TabIndex = 7;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.cbYetki);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cbNesne);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(452, 233);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(210, 258);
+            this.groupBox3.Size = new System.Drawing.Size(210, 204);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Yetki Atama";
             this.groupBox3.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(64, 181);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Yetkiyi Al";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -143,13 +135,14 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Yetki Ver";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Location = new System.Drawing.Point(3, 233);
+            this.groupBox2.Location = new System.Drawing.Point(3, 248);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(414, 260);
+            this.groupBox2.Size = new System.Drawing.Size(414, 189);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kullanıcı Yetkileri";
@@ -159,7 +152,7 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 67);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 39);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 25;
             this.dataGridView2.Size = new System.Drawing.Size(414, 150);
@@ -179,6 +172,7 @@
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
             this.silToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.silToolStripMenuItem.Text = "Sil";
+            this.silToolStripMenuItem.Click += new System.EventHandler(this.silToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -230,26 +224,49 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kullanıcı Adı";
             // 
-            // label6
+            // lblKullaniciId
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(495, 167);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 15);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Kullanıcı";
+            this.lblKullaniciId.AutoSize = true;
+            this.lblKullaniciId.Location = new System.Drawing.Point(688, 221);
+            this.lblKullaniciId.MaximumSize = new System.Drawing.Size(1000, 0);
+            this.lblKullaniciId.Name = "lblKullaniciId";
+            this.lblKullaniciId.Size = new System.Drawing.Size(52, 15);
+            this.lblKullaniciId.TabIndex = 10;
+            this.lblKullaniciId.Text = "Kullanıcı";
+            // 
+            // lblNesneId
+            // 
+            this.lblNesneId.AutoSize = true;
+            this.lblNesneId.Location = new System.Drawing.Point(688, 198);
+            this.lblNesneId.MaximumSize = new System.Drawing.Size(1000, 0);
+            this.lblNesneId.Name = "lblNesneId";
+            this.lblNesneId.Size = new System.Drawing.Size(40, 15);
+            this.lblNesneId.TabIndex = 11;
+            this.lblNesneId.Text = "Nesne";
+            // 
+            // lblYetkiId
+            // 
+            this.lblYetkiId.AutoSize = true;
+            this.lblYetkiId.Location = new System.Drawing.Point(688, 174);
+            this.lblYetkiId.MaximumSize = new System.Drawing.Size(1000, 0);
+            this.lblYetkiId.Name = "lblYetkiId";
+            this.lblYetkiId.Size = new System.Drawing.Size(32, 15);
+            this.lblYetkiId.TabIndex = 12;
+            this.lblYetkiId.Text = "Yetki";
             // 
             // W_Kullanici_Yetki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 495);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(674, 438);
+            this.Controls.Add(this.lblYetkiId);
+            this.Controls.Add(this.lblNesneId);
+            this.Controls.Add(this.lblKullaniciId);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.MaximumSize = new System.Drawing.Size(690, 534);
-            this.MinimumSize = new System.Drawing.Size(690, 534);
+            this.MaximumSize = new System.Drawing.Size(690, 477);
+            this.MinimumSize = new System.Drawing.Size(690, 477);
             this.Name = "W_Kullanici_Yetki";
             this.Text = "Kullanıcı Yetki";
             this.Load += new System.EventHandler(this.W_Kullanici_Yetki_Load);
@@ -271,11 +288,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbNesne;
+        private System.Windows.Forms.ComboBox cbYetki;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
@@ -285,6 +301,8 @@
         public System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblKullaniciId;
+        private System.Windows.Forms.Label lblNesneId;
+        private System.Windows.Forms.Label lblYetkiId;
     }
 }
