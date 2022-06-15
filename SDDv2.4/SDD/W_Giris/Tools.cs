@@ -168,6 +168,7 @@ namespace W_Giris
                     w_Detay.lblPersonelId_ref.Text = dataReader["Id"].ToString();
                     w_Detay.txtAd.Text = dataReader["PersonelAd"].ToString();
                     w_Detay.txtSoyad.Text = dataReader["PersonelSoyad"].ToString();
+                    
                     if (dataReader["PersonelCinsiyet"].Equals(true))
                     {
                         w_Detay.cbCinsiyet.Text = "Erkek";

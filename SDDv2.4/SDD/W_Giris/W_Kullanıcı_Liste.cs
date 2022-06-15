@@ -40,6 +40,7 @@ namespace W_Giris
                 string arananPersonel = txtKullanıcıAd.Text;
                 tools.ListeleKullanici(arananPersonel, "Kullanici");
                 dataGridView1.DataSource = tools.ListeleKullanici(arananPersonel, "Kullanici");
+                dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns["Aktiflik"].Visible = false;
                 dataGridView1.Columns["PasifTarih"].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Kullanıcı Adı";
@@ -54,6 +55,28 @@ namespace W_Giris
            
             
             //------------------------------------------------
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            String kullanıcıAd = txtKullanıcı.Text;
+            String sifre = txtSifre.Text;
+            if (txtKullanıcı.Text == "" || txtSifre.Text == "")
+            {
+                MessageBox.Show("Boş alanları doldurun ");
+                txtKullanıcıAd.Text = null;
+                txtSifre.Text = null;
+                return;
+            }
+            tools.KullaniciEkle(kullanıcıAd, sifre, 1);
+
+            dataGridView1.DataSource = tools.Listele("Kullanici");
+
+
+
+
+            txtKullanıcı.Text = null;
+            txtSifre.Text = null;
         }
     }
 }

@@ -36,11 +36,13 @@
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.cbCinsiyet = new System.Windows.Forms.ComboBox();
             this.btn_Kilit = new System.Windows.Forms.Button();
-            this.cbBelgeler = new System.Windows.Forms.ComboBox();
             this.btn_Guncelle = new System.Windows.Forms.Button();
             this.lblPersonelId_ref = new System.Windows.Forms.Label();
             this.lblcinsiyet_ref = new System.Windows.Forms.Label();
             this.lblKullanıcıId_ref = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAd
@@ -124,16 +126,6 @@
             this.btn_Kilit.UseVisualStyleBackColor = true;
             this.btn_Kilit.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cbBelgeler
-            // 
-            this.cbBelgeler.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbBelgeler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBelgeler.FormattingEnabled = true;
-            this.cbBelgeler.Location = new System.Drawing.Point(74, 159);
-            this.cbBelgeler.Name = "cbBelgeler";
-            this.cbBelgeler.Size = new System.Drawing.Size(121, 23);
-            this.cbBelgeler.TabIndex = 4;
-            // 
             // btn_Guncelle
             // 
             this.btn_Guncelle.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -172,16 +164,36 @@
             this.lblKullanıcıId_ref.TabIndex = 12;
             this.lblKullanıcıId_ref.Text = "-----";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(74, 162);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(237, 135);
+            this.dataGridView1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(223, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "PersonelID";
+            // 
             // W_Detay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 309);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblKullanıcıId_ref);
             this.Controls.Add(this.lblcinsiyet_ref);
             this.Controls.Add(this.lblPersonelId_ref);
             this.Controls.Add(this.btn_Guncelle);
-            this.Controls.Add(this.cbBelgeler);
             this.Controls.Add(this.btn_Kilit);
             this.Controls.Add(this.cbCinsiyet);
             this.Controls.Add(this.txtSoyad);
@@ -196,6 +208,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Detay Tablosu";
             this.Load += new System.EventHandler(this.W_Detay_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,9 +225,10 @@
         public System.Windows.Forms.ComboBox cbCinsiyet;
         private System.Windows.Forms.Button btn_Kilit;
         private System.Windows.Forms.Button btn_Guncelle;
-        public System.Windows.Forms.ComboBox cbBelgeler;
         public System.Windows.Forms.Label lblPersonelId_ref;
         public System.Windows.Forms.Label lblcinsiyet_ref;
         public System.Windows.Forms.Label lblKullanıcıId_ref;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Label label1;
     }
 }

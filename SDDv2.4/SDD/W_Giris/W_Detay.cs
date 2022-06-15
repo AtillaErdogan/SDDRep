@@ -21,7 +21,12 @@ namespace W_Giris
         
         public void W_Detay_Load(object sender, EventArgs e)
         {
-            tools.ComboboxListele("Personel_Belge", cbBelgeler, "BelgeId", Convert.ToInt32(lblPersonelId_ref.Text));
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("Select Belge_Tip.BelgeAd from Personel INNER JOIN Personel_Belge ON Personel.Id = Personel_Belge.PersonelId INNER JOIN Belge_Tip ON Belge_Tip.Id = Personel_Belge.BelgeId where Personel.Id="+lblPersonelId_ref.Text+" ", Baglanti);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            dataGridView1.DataSource = dataTable;
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -65,7 +70,7 @@ namespace W_Giris
                     }
                     else if (cbCinsiyet.Text == "Kadın")
                     {
-                        lblcinsiyet_ref.Text = 0.ToString();
+                        lblcinsiyet_ref.Text = 2.ToString();
                     }
                     komut2.Parameters.AddWithValue("@personelId", Convert.ToInt32(lblPersonelId_ref.Text));
                     komut2.Parameters.AddWithValue("@personelAd", txtAd.Text);

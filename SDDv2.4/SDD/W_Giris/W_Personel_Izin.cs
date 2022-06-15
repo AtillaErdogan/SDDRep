@@ -77,12 +77,12 @@ namespace W_Giris
             label6.Text = PersonelId.ToString();
             object PersonelAdı = dataGridView1.CurrentRow.Cells["PersonelAd"].Value;
             label5.Text = PersonelAdı.ToString();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from Izin where PersonelId = "+PersonelId+" ", Baglanti);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT Izin.PersonelId,Izin.Tarih,Secim.Secim,Sure.Sure,Izin.Sure FROM Izin INNER JOIN Secim ON Izin.SecimTur = Secim.SecimId INNER JOIN Sure ON Sure.SureId = Izin.SureTur where PersonelId = " + PersonelId+" ", Baglanti);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             dataGridView2.DataSource = dataTable;
             groupBox3.Visible = true;
-            dataGridView2.Columns[0].Visible = false;
+            dataGridView2.Columns[0].Visible = true;
             dataGridView2.Columns[1].HeaderText = "Tarih";
             dataGridView2.Columns[2].HeaderText = "Seçim Türü";
             dataGridView2.Columns[3].HeaderText = "Süre Türü";
@@ -91,6 +91,13 @@ namespace W_Giris
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string Tarih = null;
+            label7.Text = "'"+maskedTextBox1.Text+"'";
+            Tarih = maskedTextBox1.Text;
+
+
+
+
             int id = Tools.KullaniciId;
             SqlCommand komut = new SqlCommand();
             komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 3 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
@@ -99,7 +106,7 @@ namespace W_Giris
             SqlDataReader dataReader = komut.ExecuteReader();
             if (dataReader.Read())
             {
-                komut.CommandText = "Select * from Izin where PersonelId =" + label6.Text+ " And Tarih=" + maskedTextBox1.Text + " and SecimTur = " + comboBox1.SelectedValue + "";
+                komut.CommandText = "Select * from Izin where PersonelId =" + label6.Text + " And Tarih= " + label7.Text + "  and SecimTur = " + comboBox1.SelectedValue + "";
                 komut.Connection = Baglanti;
                 dataReader.Close();
                 dataReader = komut.ExecuteReader();
@@ -113,7 +120,7 @@ namespace W_Giris
                     komut.CommandText = "INSERT INTO Izin values(@PersonelId,@Tarih,@SecimTur,@SureTur,@Sure)";
                     komut.Connection = Baglanti;
                     komut.Parameters.AddWithValue("@PersonelId", label6.Text);
-                    komut.Parameters.AddWithValue("@Tarih", maskedTextBox1.Text);
+                    komut.Parameters.AddWithValue("@Tarih", Tarih);
                     komut.Parameters.AddWithValue("@SecimTur", Convert.ToInt32(comboBox1.SelectedValue));
                     komut.Parameters.AddWithValue("@SureTur", Convert.ToInt32(comboBox2.SelectedValue));
                     komut.Parameters.AddWithValue("@Sure", Convert.ToDouble(textBox1.Text));
@@ -146,18 +153,78 @@ namespace W_Giris
             }
             Baglanti.Close();
 
-
-
-
-
-
-
-
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            label8.Text= dataGridView2.CurrentRow.Cells["Tarih"].Value.ToString();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Click(object sender, EventArgs e)
+        {
+            //Baglanti.Close();
+            //int id = Tools.KullaniciId;
+            //SqlCommand komut = new SqlCommand();
+            //komut.CommandText = "SELECT * FROM Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId where Kullanici.KullaniciId = " + id + " And Kullanici_Yetki.YetkiId =" + 1 + " And Kullanici_Yetki.NesneId =" + 1 + " ";
+            //komut.Connection = Baglanti;
+            //Baglanti.Open();
+            //SqlDataReader dataReader = komut.ExecuteReader();
+            //if (dataReader.Read())
+            //{
+            //    if (dataGridView1.CurrentRow != null)
+            //    {
+
+
+            //        DialogResult result1 = MessageBox.Show("Silme işlemini onaylıyor musun?",
+            //        "Uyarı", MessageBoxButtons.YesNo);
+            //        if (result1 == DialogResult.Yes)
+            //        {
+            //            //object KullaniciId = dataGridView2.CurrentRow.Cells["KullaniciId"].Value;
+            //            //object NesneId = dataGridView2.CurrentRow.Cells["NesneId"].Value;
+            //            //object YetkiId = dataGridView2.CurrentRow.Cells["YetkiId"].Value;
+            //            SqlCommand komut2 = new SqlCommand();
+            //            komut2.CommandText = "Delete from Kullanici_Yetki where KullaniciId =" + KullaniciId + " and NesneId=" + NesneId + " and YetkiId=" + YetkiId + "  ";
+            //            komut2.Connection = Baglanti;
+            //            dataReader.Close();
+            //            int sayac = komut2.ExecuteNonQuery();
+            //            Baglanti.Close();
+            //            if (sayac > 0)
+            //            {
+
+            //                MessageBox.Show("Kayıt Silinmiştir.");
+
+            //                SqlDataAdapter dataAdapter = new SqlDataAdapter("Select  Kullanici.KullaniciId , Kullanici.KullaniciAd , Kullanici_Yetki.NesneId , Kullanici_Yetki.YetkiId , Nesne.NesneAd , Yetki.YetkiAd from Kullanici INNER JOIN Kullanici_Yetki ON Kullanici.KullaniciId = Kullanici_Yetki.KullaniciId INNER JOIN Yetki ON Yetki.Id = Kullanici_Yetki.YetkiId INNER JOIN Nesne ON Nesne.NesneId = Kullanici_Yetki.NesneId where Kullanici.KullaniciId =" + Convert.ToInt32(lblKullaniciId.Text) + " ", Baglanti);
+            //                DataTable dataTable = new DataTable();
+            //                dataAdapter.Fill(dataTable);
+            //                dataGridView2.DataSource = dataTable;
+            //                dataGridView2.Columns[0].Visible = false;
+            //                dataGridView2.Columns[1].Visible = false;
+            //                dataGridView2.Columns[2].Visible = false;
+            //                dataGridView2.Columns[3].Visible = false;
+
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Silme işlemi yapılamadı.");
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Yetki Silme İçin Yetkiniz Yok.");
+            //}
+            //Baglanti.Close();
         }
     }
 }

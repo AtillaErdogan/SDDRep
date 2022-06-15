@@ -40,8 +40,8 @@ namespace W_Giris
 
         private void kullanıcıEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            W_Kullanici_Kayit kullanici_Kayit = new W_Kullanici_Kayit();
-            kullanici_Kayit.Show();
+            W_Kullanıcı_Liste kullanıcı_Liste = new W_Kullanıcı_Liste();
+            kullanıcı_Liste.Show();
         }
 
         private void personelİzinleriToolStripMenuItem_Click(object sender, EventArgs e)
