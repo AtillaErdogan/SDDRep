@@ -95,6 +95,8 @@
             // 
             // cbNesne
             // 
+            this.cbNesne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbNesne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNesne.FormattingEnabled = true;
             this.cbNesne.Location = new System.Drawing.Point(64, 67);
             this.cbNesne.Name = "cbNesne";
@@ -104,6 +106,8 @@
             // 
             // cbYetki
             // 
+            this.cbYetki.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbYetki.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYetki.FormattingEnabled = true;
             this.cbYetki.Location = new System.Drawing.Point(64, 112);
             this.cbYetki.Name = "cbYetki";
@@ -119,6 +123,7 @@
             this.groupBox3.Controls.Add(this.cbNesne);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox3.Location = new System.Drawing.Point(452, 233);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(210, 204);
@@ -129,6 +134,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Location = new System.Drawing.Point(64, 152);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 23);
@@ -140,6 +146,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox2.Location = new System.Drawing.Point(3, 248);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 189);
@@ -180,6 +187,7 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox1.Location = new System.Drawing.Point(3, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(416, 220);
@@ -189,6 +197,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(9, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -210,6 +219,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Location = new System.Drawing.Point(271, 23);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(125, 23);

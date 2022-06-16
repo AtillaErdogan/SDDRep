@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace W_Giris
 {
@@ -17,16 +18,27 @@ namespace W_Giris
         }
         Tools tools = new Tools();
         SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
-        
-        
+        OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        string dosyaYolu;
+
+
         public void W_Detay_Load(object sender, EventArgs e)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("Select Belge_Tip.BelgeAd from Personel INNER JOIN Personel_Belge ON Personel.Id = Personel_Belge.PersonelId INNER JOIN Belge_Tip ON Belge_Tip.Id = Personel_Belge.BelgeId where Personel.Id="+lblPersonelId_ref.Text+" ", Baglanti);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
-
             dataGridView1.DataSource = dataTable;
+
             
+            SqlCommand komut = new SqlCommand("select * from Belge_Tip", Baglanti);
+            dataAdapter = new SqlDataAdapter(komut);
+            DataTable dataTable2 = new DataTable();
+            dataAdapter.Fill(dataTable2);
+            comboBox1.ValueMember = "Id";
+            comboBox1.DisplayMember = "BelgeAd";
+            comboBox1.DataSource = dataTable2;
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -92,7 +104,45 @@ namespace W_Giris
             }
             Baglanti.Close();            
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            groupBox2.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FileStream fileStream = new FileStream(dosyaYolu,FileMode.Open,FileAccess.Read);
+            BinaryReader binaryReader = new BinaryReader(fileStream);
+            byte[] dosya = binaryReader.ReadBytes((int)dosyaYolu.Length);
+            binaryReader.Close();
+            fileStream.Close();
+            //MessageBox.Show(comboBox1.SelectedValue.ToString());
+            SqlCommand komut = new SqlCommand("insert into Personel_Belge (PersonelId,BelgeId,Tarih,BelgeIcerik) values (@PersonelId,@BelgeId,@Tarih,@BelgeIcerik)", Baglanti);
+            Baglanti.Open();
+            komut.Parameters.AddWithValue("@PersonelId", lblPersonelId_ref);
+            komut.Parameters.AddWithValue("@BelgeId",comboBox1.SelectedValue);
+            komut.Parameters.AddWithValue("@Tarih", Convert.ToDateTime(DateTime.Now)); ;
+            komut.Parameters.AddWithValue("@BelgeIcerik",SqlDbType.VarBinary).Value = dosya; 
+
             
-        
+            komut.ExecuteNonQuery();
+            Baglanti.Close();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.Title = "Dosya Seç";
+            openFileDialog2.Filter = "Word Documents|*.doc|pdf Worksheets|*.pdf|PowerPoint Presentations|*.ppt" +
+             "|Office Files|*.doc;*.xls;*.ppt" +
+             "|All Files|*.*";
+            
+            if (openFileDialog2.ShowDialog()==DialogResult.OK)
+            {
+                textBox1.Text=openFileDialog2.FileName;
+                dosyaYolu= openFileDialog2.FileName; 
+            }
+        }
     }
 }

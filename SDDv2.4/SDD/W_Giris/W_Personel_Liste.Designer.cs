@@ -157,6 +157,7 @@ namespace W_Giris
             this.groupBox1.Controls.Add(this.rbErkek);
             this.groupBox1.Controls.Add(this.btnAra);
             this.groupBox1.Controls.Add(this.rbKadın);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox1.Location = new System.Drawing.Point(0, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(365, 225);

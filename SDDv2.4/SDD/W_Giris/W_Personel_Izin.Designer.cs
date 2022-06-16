@@ -72,6 +72,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox1.Location = new System.Drawing.Point(0, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(474, 224);
@@ -82,6 +83,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox2.Location = new System.Drawing.Point(0, 232);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(474, 270);
@@ -106,13 +108,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.silToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(87, 26);
             this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
             // silToolStripMenuItem
             // 
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.silToolStripMenuItem.Text = "Sil";
             // 
             // groupBox3
@@ -128,6 +130,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupBox3.Location = new System.Drawing.Point(503, 232);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(295, 270);
@@ -178,7 +181,7 @@
             // 
             this.maskedTextBox1.BeepOnError = true;
             this.maskedTextBox1.Culture = new System.Globalization.CultureInfo("tr-TR");
-            this.maskedTextBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.maskedTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.maskedTextBox1.Location = new System.Drawing.Point(99, 68);
             this.maskedTextBox1.Mask = "00/00/0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
@@ -283,7 +286,7 @@
             this.MaximumSize = new System.Drawing.Size(814, 541);
             this.MinimumSize = new System.Drawing.Size(814, 541);
             this.Name = "W_Personel_Izin";
-            this.Text = "W_Personel_Izin";
+            this.Text = "Personel İzin";
             this.Load += new System.EventHandler(this.W_Personel_Izin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

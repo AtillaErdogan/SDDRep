@@ -47,7 +47,7 @@
             this.kullanıcıToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(465, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1348, 24);
             this.menuStrip1.TabIndex = 1;
             // 
             // Menu
@@ -93,19 +93,19 @@
             // kullanıcıEkleToolStripMenuItem
             // 
             this.kullanıcıEkleToolStripMenuItem.Name = "kullanıcıEkleToolStripMenuItem";
-            this.kullanıcıEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kullanıcıEkleToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.kullanıcıEkleToolStripMenuItem.Text = "Kullanıclar";
             this.kullanıcıEkleToolStripMenuItem.Click += new System.EventHandler(this.kullanıcıEkleToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(163, 6);
             // 
             // kullnıcıListeleToolStripMenuItem
             // 
             this.kullnıcıListeleToolStripMenuItem.Name = "kullnıcıListeleToolStripMenuItem";
-            this.kullnıcıListeleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kullnıcıListeleToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.kullnıcıListeleToolStripMenuItem.Text = "Kullanıcı Yetki Ver";
             this.kullnıcıListeleToolStripMenuItem.Click += new System.EventHandler(this.kullnıcıListeleToolStripMenuItem_Click);
             // 
@@ -114,13 +114,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(465, 237);
+            this.ClientSize = new System.Drawing.Size(1348, 687);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(481, 276);
-            this.MinimumSize = new System.Drawing.Size(481, 276);
+            this.MaximumSize = new System.Drawing.Size(1450, 1000);
+            this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "W_Anasayfa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anasayfa";
+            this.Load += new System.EventHandler(this.W_Anasayfa_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

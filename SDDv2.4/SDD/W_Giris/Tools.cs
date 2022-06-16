@@ -10,12 +10,15 @@ namespace W_Giris
     public class Tools
     {
         //Detay tablosundaki Label'a değer çekiyor.
+        
         public static int KullaniciId ;
         //--------------------------------------------------------------
         //--------------------------------------------------------------
         SqlConnection Baglanti = new SqlConnection("Server=localhost;Database=SDD;Trusted_Connection=True;");
         //--------------------------------------------------------------
         //--------------------------------------------------------------
+        W_Anasayfa anasayfa = new W_Anasayfa();
+        SqlCommand komut = new SqlCommand();
         public DataTable Listele(string TabloAdı) {
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter("select * from "+TabloAdı+" ", Baglanti);
@@ -129,13 +132,13 @@ namespace W_Giris
             dataReader.Close();
             //-------------------------------------------------------
         }
-        public void Giris(string kullaniciAdi, string sifre) 
+        public int Giris(string kullaniciAdi, string sifre) 
         {
+            Baglanti.Close();
             //Kullanıcı Girişini sorgulayan fonksiyon
             //Veritabanına gidip bilgileri eşliyor dogru ise giriş yapmasını saglıyor.
-            W_Anasayfa anasayfa = new W_Anasayfa();            
-            SqlCommand komut = new SqlCommand();
-
+            
+            Form1 form1 = new Form1();
             komut.CommandText = "Select * from Kullanici where KullaniciAd= '"+kullaniciAdi+"' " +
                 "AND KullaniciSifre= '"+sifre+"' AND Aktiflik= '"+1+"' ";
             komut.Connection = Baglanti;
@@ -143,12 +146,16 @@ namespace W_Giris
             SqlDataReader dataReader = komut.ExecuteReader();
             if (dataReader.Read())
             {
+                
                 KullaniciId = Convert.ToInt32(dataReader["KullaniciId"].ToString());
-                anasayfa.Show();
+                
+                return 1;
+                
             }
             else
-            {
+            {              
                 MessageBox.Show("Hatalı Giriş");
+                return 0;
             }
             Baglanti.Close();
             //-----------------------------------------------------------------------
@@ -177,8 +184,12 @@ namespace W_Giris
                     {
                         w_Detay.cbCinsiyet.Text = "Kadın";
                     }
-                    w_Detay.Show();
-                }
+                
+                
+                //w_Detay.MdiParent = anasayfa;
+                //w_Detay.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                w_Detay.Show();
+            }
                 else
                 {
                     MessageBox.Show("Listelenecek Veri Yok.");

@@ -41,7 +41,7 @@
             this.btnKaydet.Location = new System.Drawing.Point(79, 119);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(100, 29);
-            this.btnKaydet.TabIndex = 16;
+            this.btnKaydet.TabIndex = 3;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
@@ -52,7 +52,7 @@
             this.txtSifre.Location = new System.Drawing.Point(79, 69);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(100, 23);
-            this.txtSifre.TabIndex = 14;
+            this.txtSifre.TabIndex = 2;
             // 
             // txtKullanıcıAd
             // 
@@ -60,7 +60,7 @@
             this.txtKullanıcıAd.Location = new System.Drawing.Point(79, 28);
             this.txtKullanıcıAd.Name = "txtKullanıcıAd";
             this.txtKullanıcıAd.Size = new System.Drawing.Size(100, 23);
-            this.txtKullanıcıAd.TabIndex = 13;
+            this.txtKullanıcıAd.TabIndex = 1;
             // 
             // lblSoyad
             // 

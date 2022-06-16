@@ -65,6 +65,7 @@ namespace W_Giris
             if (dataGridView1.CurrentRow != null)
             {
                 object id = dataGridView1.CurrentRow.Cells["Id"].Value;
+                
                 tools.PersonelDetay(id, "Personel",dataGridView1);
             }
             //-------------------------------------------------------------

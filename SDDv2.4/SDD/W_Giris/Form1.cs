@@ -18,14 +18,33 @@ namespace W_Giris
             InitializeComponent();
         }
         
+        W_Anasayfa anasayfa = new W_Anasayfa();
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (txtKullaniciAdi.Text == "" || txtSifre.Text == "")
+            {
+                MessageBox.Show("Boş alanları doldurun ");
+                txtKullaniciAdi.Text = null;
+                txtSifre.Text = null;
+                return;
+            }
             string kullaniciAdi = txtKullaniciAdi.Text;
             string sifre = txtSifre.Text;
-            tools.Giris(kullaniciAdi,sifre);
-            this.Hide();
+            if (tools.Giris(kullaniciAdi, sifre)==1)
+            {
+                anasayfa.Show();
+                this.Hide();
+            }
+            else if (tools.Giris(kullaniciAdi, sifre) == 0)
+            {
+                MessageBox.Show("Hatalı Giriş");
+            }
+            //tools.Giris(kullaniciAdi,sifre);
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
